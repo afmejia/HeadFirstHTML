@@ -1,4 +1,4 @@
-function Movie(title, genre, rating, showtimes) {
+function Movie (title, genre, rating, showtimes) {
   this.title = title;
   this.genre = genre;
   this.rating = rating;
@@ -30,9 +30,16 @@ function init() {
   var forbiddenPlanetMovie = new Movie("Forbiden Planet", "Classic Sci-fi", 5,
   ["5:00pm", "9:00pm"]);
 
+
   alert(banzaiMovie.getNextShowing());
   alert(plan9Movie.getNextShowing());
   alert(forbiddenPlanetMovie.getNextShowing());
+
+  var jsonString = JSON.stringify(plan9Movie);
+  alert(jsonString)
+
+  var jsonMovieObject = JSON.parse(jsonString);
+  alert("JSON Movie is " + jsonMovieObject.title);
 }
 
 window.onload = init;
