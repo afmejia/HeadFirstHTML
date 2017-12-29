@@ -18,6 +18,7 @@ function drawSquare(canvas, context) {
 function previewHandler() {
   var canvas = document.getElementById('tshirtCanvas');
   var context = canvas.getContext("2d");
+  fillBackgroundColor(canvas, context);
 
   var selectObj = document.getElementById('shape');
   var index = selectObj.selectedIndex;
