@@ -6,6 +6,22 @@ function fillBackgroundColor(canvas, context) {
   context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+function degreesToRadians(degrees) {
+  return degrees * Math.PI / 180;
+}
+
+function drawCircle(canvas, context) {
+  var radius = Math.floor(Math.random() * 40);
+  var x = Math.floor(Math.random() * canvas.width);
+  var y = Math.floor(Math.random() * canvas.height);
+
+  context.beginPath();
+  context.arc(x, y, radius, 0, degreesToRadians(360), true);
+
+  context.fillStyle = "lightblue";
+  context.fill();
+}
+
 function drawSquare(canvas, context) {
   var w = Math.floor(Math.random() * 40);
   var x = Math.floor(Math.random() * canvas.width);
@@ -27,6 +43,9 @@ function previewHandler() {
   if (shape == "squares")
     for (var squares = 0; squares < 20; squares++)
       drawSquare(canvas, context);
+  else if (shape == "circles")
+    for (var circles = 0; circles < 20; circles++)
+      drawCircle(canvas, context);
 }
 
 window.onload = function() {
