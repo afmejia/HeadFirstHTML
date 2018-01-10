@@ -6,9 +6,9 @@ function fillBackgroundColor(canvas, context) {
   context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function degreesToRadians(degrees) {
-  return degrees * Math.PI / 180;
-}
+  function degreesToRadians(degrees) {
+    return degrees * Math.PI / 180;
+  }
 
 function drawCircle(canvas, context) {
   var radius = Math.floor(Math.random() * 40);
