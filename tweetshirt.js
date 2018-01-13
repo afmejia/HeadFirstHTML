@@ -1,3 +1,24 @@
+function drawText(canvas, context) {
+  var selectObj = document.getElementById("foregroundColor");
+  var index = selectObj.selectedIndex;
+  var fgColor = selectObj[index].value;
+  context.fillStyle = fgColor;
+  context.font = "bold 1em sans-serif";
+  cotext.textAlign = "left";
+  context.fillText("I saw this tweet", 20, 40);
+
+  // Get the selected tweet from the tweets menu
+  // Draw the tweet
+  context.font = "bold 1em sans-serif";
+  context.textAlign = "right";
+  context.fillText = ("and all I got was this lousy t-shirt!", canvas.width-20,
+                      canvas.height-40);
+
+}
+
+
+
+
 function fillBackgroundColor(canvas, context) {
   var selectObj = document.getElementById("backgroundColor");
   var index = selectObj.selectedIndex;
@@ -48,7 +69,24 @@ function previewHandler() {
       drawCircle(canvas, context);
 }
 
+function  updateTweets() {
+  var tweetsSelection = document.getElementById("tweets");
+
+  tweets = ["Twitter API is not working", "So I have to do it manually",
+            "It sucks, I know", "But later I will research"];
+  for (var i = 0; i < tweets.length; i++) {
+    var tweet = tweets[i];
+    var option = document.createElement("option");
+    option.text = tweet;
+
+    tweetsSelection.options.add(option);
+  }
+
+  tweetsSelection.selectedIndex = 0;
+}
+
 window.onload = function() {
   var button = document.getElementById('previewButton');
+  updateTweets();
   button.onclick = previewHandler;
 };
