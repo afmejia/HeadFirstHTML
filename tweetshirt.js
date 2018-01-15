@@ -2,22 +2,27 @@ function drawText(canvas, context) {
   var selectObj = document.getElementById("foregroundColor");
   var index = selectObj.selectedIndex;
   var fgColor = selectObj[index].value;
+
   context.fillStyle = fgColor;
   context.font = "bold 1em sans-serif";
-  cotext.textAlign = "left";
+  context.textAlign = "left";
   context.fillText("I saw this tweet", 20, 40);
 
   // Get the selected tweet from the tweets menu
+  var selectObj = document.getElementById('tweets');
+  var index = selectObj.selectedIndex;
+  var tweet = selectObj[index].value;
+
   // Draw the tweet
+  context.font = "italic 1.2em serif";
+  context.fillText(tweet, 30, 100);
+
   context.font = "bold 1em sans-serif";
   context.textAlign = "right";
-  context.fillText = ("and all I got was this lousy t-shirt!", canvas.width-20,
+  context.fillText("and all I got was this lousy t-shirt!", canvas.width-20,
                       canvas.height-40);
 
 }
-
-
-
 
 function fillBackgroundColor(canvas, context) {
   var selectObj = document.getElementById("backgroundColor");
@@ -52,6 +57,13 @@ function drawSquare(canvas, context) {
   context.fillRect(x, y, w, w);
 }
 
+function makeImage() {
+  var canvas = document.getElementById("tshirtCanvas");
+  canvas.onclick = function() {
+    window.location = canvas.toDataURL("image/png");
+  };
+}
+
 function previewHandler() {
   var canvas = document.getElementById('tshirtCanvas');
   var context = canvas.getContext("2d");
@@ -67,6 +79,14 @@ function previewHandler() {
   else if (shape == "circles")
     for (var circles = 0; circles < 20; circles++)
       drawCircle(canvas, context);
+
+  drawText(canvas, context);
+
+  var twitterBird = new Image();
+  twitterBird.src = "twitterbird.png";
+  twitterBird.onload = function() {
+      context.drawImage(twitterBird, 20, 120, 70, 70);
+  };
 }
 
 function  updateTweets() {
@@ -89,4 +109,5 @@ window.onload = function() {
   var button = document.getElementById('previewButton');
   updateTweets();
   button.onclick = previewHandler;
+  makeImage();
 };
