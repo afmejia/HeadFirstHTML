@@ -109,5 +109,5 @@ window.onload = function() {
   var button = document.getElementById('previewButton');
   updateTweets();
   button.onclick = previewHandler;
-  makeImage();
+  makeImage();  
 };
