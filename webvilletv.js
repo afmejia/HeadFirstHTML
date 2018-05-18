@@ -1,4 +1,4 @@
-var position = 0;
+  var position = 0;
 var playlist;
 var video;
 
